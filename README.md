@@ -1,4 +1,4 @@
-# Business News Intelligence Monitor — Ejemplo 1 (Sección 4.0.1)
+# Agente de Monitoreo de Noticias  — Ejemplo 1 (Sección 4.0.1)
 
 Este repositorio contiene el código correspondiente al **Ejemplo 1** del Trabajo de Fin de Grado *Exploración de sistemas multi-agente en IA generativa*:  
 **Agente de Monitoreo de Noticias (Búsqueda y Análisis de Insights Ejecutivos)**.
