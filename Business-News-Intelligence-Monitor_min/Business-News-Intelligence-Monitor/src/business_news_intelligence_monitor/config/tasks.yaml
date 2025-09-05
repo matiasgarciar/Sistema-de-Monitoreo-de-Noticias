@@ -1,0 +1,74 @@
+---
+comprehensive_news_search:
+  description: |-
+    Conduct comprehensive search for business news about {company_name} within the date range from {start_date} to {end_date}. Use multiple search engines and news sources to ensure complete coverage. Focus on finding:
+    - Financial news and earnings reports
+    - Strategic partnerships and acquisitions
+    - Product launches and innovations
+    - Market developments and analyst opinions
+    - Leadership changes and corporate announcements
+    - Regulatory news and legal developments
+
+    For each relevant news item found, collect the title, summary, publication date, source, and URL. Prioritize recent news and verify that all results fall within the specified date range.
+  expected_output: |-
+    A comprehensive list of relevant news articles about {company_name} from {start_date} to {end_date}, including:
+    - Article titles and headlines
+    - Brief summaries or descriptions
+    - Publication dates
+    - News sources
+    - Complete URLs for each article
+    - Categorization by news type (financial, strategic, product, etc.)
+    All results should be formatted as a structured list with clear attribution and chronological organization.
+  agent: business_news_research_specialist
+full_content_extraction:
+  description: |-
+    Extract the complete content from each news article URL identified in the previous search. For each URL:
+    - Retrieve the full article text, not just headlines or snippets
+    - Preserve important formatting and structure
+    - Extract key metadata (author, publication date, tags)
+    - Identify and extract key quotes and statements
+    - Capture any financial data, numbers, or metrics mentioned
+    - Note any images, charts, or multimedia elements that may be relevant
+
+    Organize the extracted content in a structured format that preserves the relationship between each article and its source URL for complete traceability.
+  expected_output: |-
+    Complete extracted content for each news article, formatted as:
+    - Full article text with preserved structure
+    - Article metadata (author, date, source)
+    - Key quotes and statements highlighted
+    - Financial data and metrics extracted
+    - Source URL maintained for each piece of content
+    - Clear organization linking each extracted content piece to its original article from the search results
+
+    The output should maintain complete traceability between extracted content and original sources.
+  agent: content_extraction_specialist
+  context:
+  - comprehensive_news_search
+executive_intelligence_report:
+  description: |-
+    Analyze all collected news content about {company_name} and create a comprehensive executive briefing report. The analysis should:
+    - Identify key themes and trends in the news coverage
+    - Highlight strategic implications and business impact
+    - Categorize news by importance and relevance
+    - Extract actionable insights and recommendations
+    - Identify potential risks and opportunities
+    - Create executive summary with key takeaways
+    - Ensure complete source attribution and citation
+
+    The report should be written for C-level executives, focusing on strategic significance rather than operational details.
+  expected_output: "A comprehensive executive intelligence report in markdown format
+    containing:\n\n# Executive Intelligence Report: {company_name}\n## Report Period:
+    {start_date} to {end_date}\n\n### Executive Summary\n- Key developments overview\n-
+    Strategic implications\n- Critical insights and recommendations\n\n### News Analysis
+    by Category\n#### Financial Performance & Results\n#### Strategic Initiatives
+    & Partnerships  \n#### Product & Innovation Updates\n#### Market Position & Competition\n####
+    Leadership & Organizational Changes\n#### Regulatory & Legal Developments\n\n###
+    Key Insights & Strategic Implications\n### Risk Assessment\n### Opportunities
+    Identified\n### Recommendations\n\n### Complete Source List\n- All articles with
+    titles, sources, dates, and URLs\n- Clear citation format for verification\n\nThe
+    report should be professional, concise, and actionable for executive decision-making,
+    with complete traceability to original sources."
+  agent: executive_intelligence_analyst
+  context:
+  - comprehensive_news_search
+  - full_content_extraction
