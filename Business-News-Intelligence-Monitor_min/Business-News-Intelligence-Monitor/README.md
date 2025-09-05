@@ -1,54 +1,64 @@
-# BusinessNewsIntelligenceMonitor Crew
+# Agente de Monitoreo de Noticias  — Ejemplo 1 (Sección 4.0.1)
 
-Welcome to the BusinessNewsIntelligenceMonitor Crew project, powered by [crewAI](https://crewai.com). This template is designed to help you set up a multi-agent AI system with ease, leveraging the powerful and flexible framework provided by crewAI. Our goal is to enable your agents to collaborate effectively on complex tasks, maximizing their collective intelligence and capabilities.
+Este repositorio contiene el código correspondiente al **Ejemplo 1** del Trabajo de Fin de Grado *Exploración de sistemas multi-agente en IA generativa*:  
+**Agente de Monitoreo de Noticias (Búsqueda y Análisis de Insights Ejecutivos)**.
 
-## Installation
+El sistema implementa una pipeline de agentes con dos roles principales:
 
-Ensure you have Python >=3.10 <3.14 installed on your system. This project uses [UV](https://docs.astral.sh/uv/) for dependency management and package handling, offering a seamless setup and execution experience.
+- **Researcher** → se encarga de buscar y recolectar información en distintas fuentes.  
+- **Analyst** → sintetiza la información recolectada en un informe ejecutivo con citas a las fuentes.  
 
-First, if you haven't already, install uv:
+Este ejemplo acompaña la **Sección 4.0.1** de la memoria y la figura que ilustra la arquitectura de monitoreo de noticias.
 
-```bash
-pip install uv
-```
+---
 
-Next, navigate to your project directory and install the dependencies:
+## 📂 Estructura del repositorio
 
-(Optional) Lock the dependencies and install them by using the CLI command:
-```bash
-crewai install
-```
-### Customizing
+- `src/business_news_intelligence_monitor/`
+  - `main.py` → punto de entrada del sistema  
+  - `crew.py` → definición de la crew y orquestación de los agentes  
+  - `config/agents.yaml` → configuración de agentes (roles, objetivos)  
+  - `config/tasks.yaml` → configuración de tareas asignadas  
+  - `tools/` → herramientas personalizadas usadas por los agentes  
+- `knowledge/` → prompts o preferencias auxiliares  
+- `pyproject.toml` → metadatos del proyecto  
+- `requirements.txt` → dependencias mínimas (para instalación con `pip`)  
+- `.env.example` → plantilla de credenciales y claves API  
+- `.gitignore` → exclusiones recomendadas (para no subir `.env`, `.venv`, cachés, etc.)
 
-**Add your `OPENAI_API_KEY` into the `.env` file**
+---
 
-- Modify `src/business_news_intelligence_monitor/config/agents.yaml` to define your agents
-- Modify `src/business_news_intelligence_monitor/config/tasks.yaml` to define your tasks
-- Modify `src/business_news_intelligence_monitor/crew.py` to add your own logic, tools and specific args
-- Modify `src/business_news_intelligence_monitor/main.py` to add custom inputs for your agents and tasks
+## ⚙️ Instalación y uso
 
-## Running the Project
+1. **Clonar el repositorio:**
+   ```bash
+   git clone https://github.com/matiasgarciar/Latest-AI-Development.git
+   cd Latest-AI-Development/Business-News-Intelligence-Monitor
 
-To kickstart your crew of AI agents and begin task execution, run this from the root folder of your project:
+2. **(Opcional) Crear un entorno virtual:**
+   ```bash
+   python -m venv .venv
+   source .venv/bin/activate   # Linux/Mac
+   .venv\Scripts\activate      # Windows
 
-```bash
-$ crewai run
-```
+3. **Instalar dependencias:**
+   ```bash
+   pip install -r requirements.txt
 
-This command initializes the business_news_intelligence_monitor Crew, assembling the agents and assigning them tasks as defined in your configuration.
+4.**Configurar variables de entorno:**
+   ```bash
+   cp .env.example .env
+Después edita el archivo .env y añade tus claves:
 
-This example, unmodified, will run the create a `report.md` file with the output of a research on LLMs in the root folder.
+   ```ini
 
-## Understanding Your Crew
+   OPENAI_API_KEY=sk-...
+   SERPER_API_KEY=...
 
-The business_news_intelligence_monitor Crew is composed of multiple AI agents, each with unique roles, goals, and tools. These agents collaborate on a series of tasks, defined in `config/tasks.yaml`, leveraging their collective skills to achieve complex objectives. The `config/agents.yaml` file outlines the capabilities and configurations of each agent in your crew.
+5. **Ejecutar el sistema:**
+   ```bash
 
-## Support
-
-For support, questions, or feedback regarding the BusinessNewsIntelligenceMonitor Crew or crewAI.
-- Visit our [documentation](https://docs.crewai.com)
-- Reach out to us through our [GitHub repository](https://github.com/joaomdmoura/crewai)
-- [Join our Discord](https://discord.com/invite/X4JWnZnxPb)
-- [Chat with our docs](https://chatg.pt/DWjSBZn)
-
-Let's create wonders together with the power and simplicity of crewAI.
+python src/business_news_intelligence_monitor/main.py \
+  --company "Tesla" \
+  --date_from "2025-08-01" \
+  --date_to "2025-08-31"
