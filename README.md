@@ -38,25 +38,25 @@ Este ejemplo acompaña la **Sección 4.0.1** de la memoria y la figura que ilust
 2. **(Opcional) Crear un entorno virtual:**
    ```bash
 Copiar código
-python -m venv .venv
-source .venv/bin/activate   # Linux/Mac
-.venv\Scripts\activate      # Windows
+   python -m venv .venv
+   source .venv/bin/activate   # Linux/Mac
+   .venv\Scripts\activate      # Windows
 
 3. **Instalar dependencias:**
    ```bash
 Copiar código
-pip install -r requirements.txt
+   pip install -r requirements.txt
 
 4.**Configurar variables de entorno:**
    ```bash
 Copiar código
-cp .env.example .env
+   cp .env.example .env
 Después edita el archivo .env y añade tus claves:
 
    ```ini
 Copiar código
-OPENAI_API_KEY=sk-...
-SERPER_API_KEY=...
+   OPENAI_API_KEY=sk-...
+   SERPER_API_KEY=...
 
 5. **Ejecutar el sistema:**
    ```bash
